@@ -1,6 +1,6 @@
 <?php
 /**
- * @package    tags
+ * @package    content
  *
  * @author     Kevin <your@email.com>
  * @copyright  A copyright
@@ -11,12 +11,12 @@
 defined('_JEXEC') or die;
 
 /**
- * Tags script file.
+ * Content script file.
  *
  * @package     A package name
  * @since       1.0
  */
-class plgSystemTagsInstallerScript
+class plgTagsContentInstallerScript
 {
 	/**
 	 * Constructor

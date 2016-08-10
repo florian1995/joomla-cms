@@ -566,6 +566,7 @@ class JHelperTags extends JHelper
 			->select('MAX(c.core_language) AS core_language, MAX(c.core_catid) AS core_catid')
 			->select('MAX(c.core_publish_up) AS core_publish_up, MAX(c.core_publish_down) as core_publish_down')
 			->select('MAX(ct.type_title) AS content_type_title, MAX(ct.router) AS router')
+			->select('ctnt.attribs AS attribs')
 
 			->from('#__contentitem_tag_map AS m')
 			->join(
@@ -580,6 +581,9 @@ class JHelperTags extends JHelper
 
 			// Join over categoris for get only published
 			->join('INNER', '#__categories AS tc ON tc.id = c.core_catid AND tc.published = 1')
+
+			// Join over the content to get attribs
+			->join('LEFT', '#__content AS ctnt ON m.content_item_id = ctnt.id')
 
 			// Join over the users for the author and email
 			->select("CASE WHEN c.core_created_by_alias > ' ' THEN c.core_created_by_alias ELSE ua.name END AS author")
